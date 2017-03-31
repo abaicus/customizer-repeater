@@ -77,7 +77,7 @@ class Customizer_Repeater extends WP_Customize_Control {
 		}
 
 		if ( file_exists( get_template_directory() . '/customizer-repeater/inc/icons.php' ) ) {
-			$this->customizer_icon_container = file_get_contents( get_template_directory() . '/customizer-repeater/inc/icons.php' );
+			$this->customizer_icon_container =  'inc/customizer-repeater/inc/icons';
 		}
 
 		$allowed_array1 = wp_kses_allowed_html( 'post' );
@@ -383,7 +383,7 @@ class Customizer_Repeater extends WP_Customize_Control {
                     <i class="fa <?php echo esc_attr($value); ?>"></i>
                 </span>
 			</div>
-			<?php echo wp_kses( $this->customizer_icon_container, $this->allowed_html ); ?>
+			<?php get_template_part( $this->customizer_icon_container ); ?>
 		</div>
 		<?php
 	}
@@ -426,7 +426,7 @@ class Customizer_Repeater extends WP_Customize_Control {
 						<input data-placement="bottomRight" class="icp icp-auto" value="<?php if(!empty($value)) { echo esc_attr( $value ); } ?>" type="text">
 						<span class="input-group-addon"></span>
 					</div>
-					<?php echo wp_kses( $this->customizer_icon_container, $this->allowed_html ); ?>
+					<?php get_template_part( $this->customizer_icon_container ); ?>
 					<input type="text" class="customizer-repeater-social-repeater-link"
 					       placeholder="<?php esc_attr_e( 'Link', 'your-textdomain' ); ?>">
 					<input type="hidden" class="customizer-repeater-social-repeater-id" value="">
@@ -448,7 +448,7 @@ class Customizer_Repeater extends WP_Customize_Control {
 							<input data-placement="bottomRight" class="icp icp-auto" value="<?php if( !empty($social_icon['icon']) ) { echo esc_attr( $social_icon['icon'] ); } ?>" type="text">
 							<span class="input-group-addon"><i class="fa <?php echo esc_attr( $social_icon['icon'] ); ?>"></i></span>
 						</div>
-						<?php echo wp_kses( $this->customizer_icon_container, $this->allowed_html ); ?>
+						<?php get_template_part( $this->customizer_icon_container ); ?>
 						<input type="text" class="customizer-repeater-social-repeater-link"
 						       placeholder="<?php esc_html_e( 'Link', 'your-textdomain' ); ?>"
 						       value="<?php if ( ! empty( $social_icon['link'] ) ) {
